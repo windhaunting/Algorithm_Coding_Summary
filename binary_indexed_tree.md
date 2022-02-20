@@ -1,18 +1,22 @@
 
 
-# binary indexed tree  or Fenwick tree
+# Binary indexed tree  or Fenwick tree
 
-problem example:
+Problem decription:
     
 We have an array arr[0 . . . n-1]. We should be able to
-1 Find the sum of first i elements.
-2 Change value of a specified element of the array arr[i] = x where 0 <= i <= n-1.
+
+1. Find the sum of first i elements.
+
+2. Change value of a specified element of the array arr[i] = x where 0 <= i <= n-1.
+
+
+# Solution:
+
 Using Binary Indexed Tree, we can do both tasks in O(Logn) time.
 The advantages of Binary Indexed Tree over Segment are, requires less space and very easy to implement
 
-
-# solve the range sum query mutable with binary indexed tree
-#o(nlogn) to create the tree,   take space o(n)  . o(logn) to query or update?
+It takes O(nlogn) to create the tree,   and take o(logn) time or space to query or update.
 
 
 
@@ -69,7 +73,8 @@ class NumArray(object):       # NumArray is just subaray tree
 
 
 ```
-## reference:  
+
+## Reference:  
 https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/
  
 http://blog.csdn.net/u013974420/article/details/41942435

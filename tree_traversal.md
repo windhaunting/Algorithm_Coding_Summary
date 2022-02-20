@@ -3,12 +3,17 @@
 ## Binary tree traversal algorithms
 
 
-There are four common methods: preorder traversal, inorder traversal, postOrder traversal, and level order traversal
+There are four common methods: 
+* Preorder traversal
+* Inorder traversal
+* PostOrder traversal, 
+* Level order traversal
 
+
+## Recursive ways:
 
 ```
-## Inorder Method
-# recursive way:
+## Inorder traversal Method
 # A function to do inorder tree traversal
 def printInorder(root):
 
@@ -56,7 +61,7 @@ def printPreorder(root):
 
 ```   
 
-# iterative way:  
+## Iterative ways:  
 
 ```
 '''
@@ -153,7 +158,7 @@ def inorderTraversal(self, root: TreeNode) -> List[int]:
 
 ```
 
-##   Another ways to do iterative methods
+##  Another iterative methods are based on stacks, which are more complex.
 
 ```
 class Solution(object):
