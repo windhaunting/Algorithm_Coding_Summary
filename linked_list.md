@@ -52,7 +52,7 @@ class Solution(object):
 ```
 
 
-# Slow and Fast pointer and reverse linked list
+## Slow and Fast pointer and reverse linked list
 
 ```
 # Given a singly linked list of integers, determine whether or not it's a palindrome.
@@ -90,6 +90,7 @@ in O(N) time and O(1) space
 
 ## LRU cache
 
+```
 # Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
 class Node:
@@ -163,4 +164,4 @@ class LRUCache:
         if self.head is None:
             self.head = self.tail
 
-
+```
