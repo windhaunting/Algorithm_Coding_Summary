@@ -65,7 +65,7 @@ class FrequencyStack:
 
     return num
 
-    ```
+```
 
 
 ## Leetcode 215. Kth Largest Element in an Array
@@ -73,6 +73,7 @@ class FrequencyStack:
 
 The decription is given here: "https://leetcode.com/problems/kth-largest-element-in-an-array/"
 
+```
 # python heaq only support min-heap;
         #if built-in heapq  (priority queue) is allowed in python,
         h = []
@@ -84,7 +85,7 @@ The decription is given here: "https://leetcode.com/problems/kth-largest-element
                     heapq.heappush(h, n)    
             
         return h[0]
-
+```
 
 ## Leetcode 295. Find Median from Data Stream
 
