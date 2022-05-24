@@ -48,7 +48,7 @@ arr = [3,7, 2, 5]  # [2, -7, -2, -2, 0]
 QSort(arr)
 print("QSort: ", arr) 
 
-
+```
 
 
 
