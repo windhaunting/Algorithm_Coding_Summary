@@ -3,10 +3,10 @@ Dynamic Programming (DP) is an algorithmic technique for solving an optimization
 
 ## The characteristics of DP problems.
 
-(1) Optimal substructure
-(2) Overlapping subproblem
-(3) Previous substructure does not affect the latter one
-(4) Memorization of small subproblem solution to save space
+1) Optimal substructure
+2) Overlapping subproblem
+3) Previous substructure does not affect the latter one
+4) Memorization of small subproblem solution to save space
 
 
 ## What types of problem could be possible to be solved by DP?
@@ -18,24 +18,18 @@ Dynamic Programming (DP) is an algorithmic technique for solving an optimization
 
 ## How to start with a DP problem:
     
-(1)Initialize state
-(2)Define a transition function with the characteristics of DP
-(3)top-down method or bottom-up method with memoization 
+1)Initialize state
+2)Define a transition function with the characteristics of DP
+3)top-down method or bottom-up method with memoization 
 
 
 ## DP common type
 
-1. Sequence DP 
-
-2. 2 Sequence DP 
-
-3.  Matrix DP 
-
-4. Knapsack problem (0-1 knapsack)
-
-5. Range DP;
-
-
+1) Sequence DP 
+2) 2 Sequence DP 
+3) Matrix DP 
+4) Knapsack problem (0-1 knapsack)
+5) Range DP;
 
 
 
