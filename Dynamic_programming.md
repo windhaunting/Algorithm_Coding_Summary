@@ -18,9 +18,9 @@ Dynamic Programming (DP) is an algorithmic technique for solving an optimization
 
 ## How to start with a DP problem:
     
-1)Initialize state
-2)Define a transition function with the characteristics of DP
-3)top-down method or bottom-up method with memoization 
+1) Initialize state
+2) Define a transition function with the characteristics of DP
+3) Top-down method or bottom-up method with memoization 
 
 
 ## DP common type
