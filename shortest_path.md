@@ -81,9 +81,8 @@ g.dijkstra(0)
 
     ```
     # Input graph structure: Adjacency Matrix
-
     # Time Complexity of the implementation is O(V^2). If the input graph is 
-represented using adjacency list, it can be reduced to O(E log V) or O(VlogV) with the help of binary heap. 
+    # represented using adjacency list, it can be reduced to O(E log V) or O(VlogV) with the help of binary heap. 
 
 
 import sys
