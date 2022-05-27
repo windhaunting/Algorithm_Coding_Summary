@@ -176,11 +176,10 @@ g.dijkstra(0)
 ## Bellman-Ford algorithm
 
 ```
-Bellman-Ford algorithm  O(VE)     
-Dijkstra doesn’t work for Graphs with negative weight edges,
-Bellman-Ford works for such graphs. Bellman-Ford is also simpler than Dijkstra and suites well for distributed systems.
-But time complexity of Bellman-Ford is O(VE), which is more than Dijkstra.
-'''
+# Bellman-Ford algorithm  O(VE)     
+#Dijkstra doesn’t work for Graphs with negative weight edges,
+#Bellman-Ford works for such graphs. Bellman-Ford is also simpler than Dijkstra and suites well for distributed systems.
+#But time complexity of Bellman-Ford is O(VE), which is more than Dijkstra.
          
 from collections import defaultdict
 
@@ -332,7 +331,6 @@ def printSolution(dist):
                 print ("%7d\t" %(dist[i][j])), 
             if j == V-1: 
                 print ("")
-  
   
   
 # Driver program to test the above program 
