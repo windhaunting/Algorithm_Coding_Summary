@@ -6,7 +6,7 @@ Topological sorting  for Directed Acyclic Graph (DAG) is a linear ordering of ve
 
 ## Ways to implement topological sorting. 
 
- ### 1st use recursive way:  use stack
+ #### 1) use recursive way:  use stack
 
 
 ```
@@ -49,9 +49,8 @@ Topological sorting  for Directed Acyclic Graph (DAG) is a linear ordering of ve
         # The function to do Topological Sort. It uses recursive 
         # topologicalSortUtil()
         def topologicalSortRecursive(self):
-            '''
-            use stack and 
-            '''
+            #use stack and 
+        
             # Mark all the vertices as not visited
             visited = set()
         
@@ -87,7 +86,7 @@ Topological sorting  for Directed Acyclic Graph (DAG) is a linear ordering of ve
 ```
 
 
- ### 2nd use iterative way;  use queue
+ #### 2) use iterative way;  use queue
 
 '''
     # A DAG G has at least one vertex with in-degree 0 and one vertex with out-degree 0.
@@ -183,7 +182,7 @@ There are a total of n courses you have to take, labeled from 0 to n-1. Some cou
 
 
 ```
-Except from DFS, here we could use topological sort BFS get the indegree, get each node's indegree, then use topological sort from a node with indegree == 0
+    # Except from DFS, here we could use topological sort BFS get the indegree, get each node's indegree, then use topological sort from a node with indegree == 0
     # if we can not visit all the node, there exists a cycle in the graph
         if not prerequisites or len(prerequisites) == 0:
             return True
