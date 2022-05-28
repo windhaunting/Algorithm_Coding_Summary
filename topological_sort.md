@@ -174,14 +174,14 @@ Topological sorting  for Directed Acyclic Graph (DAG) is a linear ordering of ve
     print ("Following is a Topological Sort of the given graph")
     g.topologicalSort()
 
-```
+
 
 ##  Example 207. Course Schedule
 
 There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1] Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses? The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/course-schedule/)
 
 
-```
+
     # Except from DFS, here we could use topological sort BFS get the indegree, get each node's indegree, then use topological sort from a node with indegree == 0
     # if we can not visit all the node, there exists a cycle in the graph
         if not prerequisites or len(prerequisites) == 0:
