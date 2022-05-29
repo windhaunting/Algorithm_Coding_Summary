@@ -70,7 +70,6 @@ class FrequencyStack:
 
 ## Leetcode 215. Kth Largest Element in an Array
 
-
 The decription is given here: "https://leetcode.com/problems/kth-largest-element-in-an-array/"
 
 ```
