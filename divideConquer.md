@@ -3,8 +3,6 @@
 Divide and Conquer is an algorithm design paradigm that recursively breaks down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly.
 
 
-Reference from: "https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/"
-
 ### Three parts of Divide and Conquer
 This technique can be divided into the following three parts:
 
@@ -33,6 +31,8 @@ The following are some standard algorithms that follow Divide and Conquer algori
 What does not qualifies as Divide and Conquer:
 
 Binary Search is a searching algorithm. In each step, the algorithm compares the input element x with the value of the middle element in the array. If the values match, return the index of the middle. Otherwise, if x is less than the middle element, then the algorithm recurs for the left side of the middle element, else recurs for the right side of the middle element. Contrary to popular belief, this is not an example of Divide and Conquer because there is only one sub-problem in each step (Divide and conquer requires that there must be two or more sub-problems) and hence this is a case of Decrease and Conquer.
+
+Reference from: "https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/"
 
 
 ### Example of Divide and Conquer: Merge Sort:
