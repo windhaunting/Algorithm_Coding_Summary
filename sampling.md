@@ -117,30 +117,100 @@ class Solution(object):
  ```
 
 
- ### Example of Rejection sampling 470. Implement Rand10() Using Rand7()
- The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/implement-rand10-using-rand7/)
+ ### Example of reservoir sampling: 398. Random Pick Index
+The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/random-pick-index/)
 
-```
+ ```
+import random
+
 class Solution(object):
-    def rand10(self):
+
+    def __init__(self, nums):
         """
+        
+        :type nums: List[int]
+        :type numsSize: int
+        """
+        self.nums = nums
+
+    def pick(self, target):
+        """
+        :type target: int
         :rtype: int
         """
         
-        # [7,7] =>49  [1, 40]  =>[41, 49]
-        # for [1, 40], we use [1,2,3,...,10], [1,2,3,..10],...[1,2,3,...,10]
-        
-        while(True):
-            a = rand7()
-            b = rand7()
-            
-            num = (a-1)*7 + b
-            
-            if num <= 40:
-                break
-        return 1 + (num-1)%10
+        count, index = 0, 0
+        for i, e in enumerate(self.nums):
+            if e == target:
+                count += 1
+                rand = random.randint(1, count)
+                if rand == count:
+                    index = i
+
+        return index
+
+ ```
+
+
+ ### Example of weighted sampling 528. Random Pick with Weight 
+ The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/random-pick-with-weight/)
 
 ```
+
+import random
+class Solution:
+
+    def __init__(self, w: List[int]):
+        self.w = w
+        
+        if not self.w or len(self.w) == 0:
+            return 0
+        # prefix sum
+        for i in range(1, len(self.w)):
+            self.w[i] +=self.w[i-1]
+            
+    def pickIndex(self) -> int:
+        #idea 1. copy the times of each index weight into a new array, in the new array, each value is picked randomly and equally, which has the same probability as the number of the original weight.
+        # problem: too costly for the space.
+        
+        # idea 2 use prefix sum, accumulated sum of weight 
+        # e.g.  [1,3,2]  => index [0,1,2], we get prefix sum[1,4,6]
+        # then we pick number from 0 to 5, if it's 1, index 0, if it's 2-4, return index 1, if it's 5-6 
+        #return index 2; each number has a proportional weight = 3
+        # because it's ordered, we can use binary search
+        
+        
+        
+        # generate a random number
+        v = random.randint(0, self.w[-1]-1)
+        #bfs search
+        ind = self.bfs(self.w, v)
+        
+        #for i in range(0, self.w[-1]):
+        #    ind = self.bfs(self.w, i)
+            #print ("i : ", i, ind)
+        return ind
+    
+    def bfs(self, w, v):
+        l = 0
+        r = len(w)-1
+        while (l < r):
+            mid = l + (r-l)//2
+            if v >= w[mid]:
+                l = mid + 1
+            else:
+                r = mid
+        return r                     
+        
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
+
+
+
+
+```
+
 
  ### Example of Rejection sampling 710. Random Pick with Blacklist
 
