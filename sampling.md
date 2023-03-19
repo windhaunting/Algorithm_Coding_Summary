@@ -171,7 +171,32 @@ class Solution:
 # param_1 = obj.pickIndex()
 
 
+```
 
+
+Example of Rejection sampling 470. Implement Rand10() Using Rand7()
+The detailed description is here
+
+```
+
+class Solution(object):
+    def rand10(self):
+        """
+        :rtype: int
+        """
+        
+        # [7,7] =>49  [1, 40]  =>[41, 49]
+        # for [1, 40], we use [1,2,3,...,10], [1,2,3,..10],...[1,2,3,...,10]
+        
+        while(True):
+            a = rand7()
+            b = rand7()
+            
+            num = (a-1)*7 + b
+            
+            if num <= 40:
+                break
+        return 1 + (num-1)%10
 
 ```
 
