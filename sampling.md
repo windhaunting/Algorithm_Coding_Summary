@@ -81,42 +81,6 @@ if __name__ == "__main__":
 
  ```
 
-
- ### Example of reservoir sampling: 398. Random Pick Index
-The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/random-pick-index/)
-
- ```
-import random
-
-class Solution(object):
-
-    def __init__(self, nums):
-        """
-        
-        :type nums: List[int]
-        :type numsSize: int
-        """
-        self.nums = nums
-
-    def pick(self, target):
-        """
-        :type target: int
-        :rtype: int
-        """
-        
-        count, index = 0, 0
-        for i, e in enumerate(self.nums):
-            if e == target:
-                count += 1
-                rand = random.randint(1, count)
-                if rand == count:
-                    index = i
-
-        return index
-
- ```
-
-
  ### Example of reservoir sampling: 398. Random Pick Index
 The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/random-pick-index/)
 
