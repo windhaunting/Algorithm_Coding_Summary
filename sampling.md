@@ -174,8 +174,8 @@ class Solution:
 ```
 
 
-Example of Rejection sampling 470. Implement Rand10() Using Rand7()
-The detailed description is here
+ ### Example of Rejection sampling 470. Implement Rand10() Using Rand7()
+The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/implement-rand10-using-rand7/)
 
 ```
 
