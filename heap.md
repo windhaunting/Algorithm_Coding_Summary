@@ -5,9 +5,9 @@ Heap is a tree-based structure which is essentially an almost complete tree that
 It includes min and max heap.
 
 
-* Min heap is the parent node p of a node c is greater than or equal to its children nodes
+* Min heap is the parent node p of a node c is smaller than or equal to its children nodes
 The top is the minimum node.
-Vice versa, tHe max heap's top is the maximum node.
+Vice versa, the max heap's top is the maximum node.
 
 
 * In Python, the heapq library implements min heap in default. 
