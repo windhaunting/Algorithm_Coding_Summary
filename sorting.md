@@ -149,3 +149,13 @@ absSort(arr)
 print('arr :', arr)
 
 ```
+
+The second idea: 
+or construct the tuple list and sort
+
+```
+arr_lst = [(e, abs(e), e//e) for e in arr]
+arr_lst = arr_lst.sort(key = lambda ele: (ele[1], ele[2]))
+arr_sorted = [ele[0] for ele in arr_lst]
+
+```
