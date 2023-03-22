@@ -151,7 +151,7 @@ print('arr :', arr)
 ```
 
 The second idea: 
-or construct the tuple list and sort
+construct the tuple list and sort based on the element in a tuple.
 
 ```
 arr_lst = [(e, abs(e), e//e) for e in arr]
