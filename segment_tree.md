@@ -209,7 +209,7 @@ class NumArray(object):
         
         self.createSegTreeHelper(nums, l, r, 0, self.sumLst)
         #print("sumLst: ", self.sumLst)
-        #return sumLst
+        #return self.sumLst
     
     # build segment tree
     # https://www.youtube.com/watch?v=e_bK-dgPvfM
