@@ -86,7 +86,7 @@ class NumArray(object):
         '''
         def rangeSumHelper(root, lInd, rInd):
             
-            #if lInd > root.end or lInd < root.start:
+            #if rInd > root.end or lInd < root.start:
             #    return 0
             
             #inside
