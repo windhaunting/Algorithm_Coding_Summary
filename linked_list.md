@@ -91,7 +91,9 @@ in O(N) time and O(1) space
 ## LRU cache
 
 ```
-# Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+# Design a data structure that follows the constraints of a Least Recently Used (LRU) cache (Leetcode 146).
+
+from collections import defaultdict
 
 class Node:
     def __init__(self, key, val):
@@ -99,69 +101,61 @@ class Node:
         self.val = val
         self.prev = None
         self.next = None
-
-
+        
 class LRUCache:
 
     def __init__(self, capacity: int):
+        self.key_map = defaultdict(Node)
         self.cap = capacity
-        self.head = None
-        self.tail = None
-        self.dict_cache = {}      # store the Node as the value
+        self.dummy_head = Node(-2**32, -2**32)
+        self.dummy_end = Node(2**32, 2**32)
         
-    def get(self, key: int) -> int:     
-        if key not in self.dict_cache:
+        self.dummy_head.next = self.dummy_end
+        self.dummy_end.prev = self.dummy_head
+        self.cur_no = 0  
+        
+    def append_node(self,node):
+        # p<->dummy_end =>    p<->node<->dummy_end
+        
+        prev_node = self.dummy_end.prev
+        prev_node.next = node
+        node.prev = prev_node
+        node.next = self.dummy_end
+        self.dummy_end.prev = node
+        
+        
+    def pop_node(self, node):
+        # p<->node<->next   => p<->next
+        prev_node = node.prev
+        nxt_node = node.next
+        prev_node.next = nxt_node
+        nxt_node.prev = prev_node
+        
+
+    def get(self, key: int) -> int:
+        if key not in self.key_map:
             return -1
         
-        #move to tail
-        #remove the node
-        t = self.dict_cache[key]
-        self.removeNode(t)
-        self.appendNode(t)
+        node = self.key_map[key]
+        self.pop_node(node)
+        self.append_node(node)
         
-        return t.val
-    
+        return node.val
+        
+
     def put(self, key: int, value: int) -> None:
+        node = Node(key, value)
         
-        if key in self.dict_cache:
-            t = self.dict_cache[key]
-            t.val = value
-            # move to tail
-            self.removeNode(t)
-            self.appendNode(t)
-        else:
-            if self.cap <= len(self.dict_cache):
-                # remove head
-                del self.dict_cache[self.head.key]
-                self.removeNode(self.head)
-
-            # add to tail
-            t = Node(key, value)
-            self.appendNode(t)
-            self.dict_cache[key] = t # store the node
-        
-        
-    def removeNode(self, nd) -> None:
-        if nd.prev is None:
-            self.head = nd.next
-        else:
-            nd.prev.next = nd.next
-
-        if nd.next is None:
-            self.tail = nd.prev
-        else:
-            nd.next.prev = nd.prev
-            
-    def appendNode(self, nd) -> None:
-
-        if self.tail is not None:
-            self.tail.next = nd
-
-        nd.prev = self.tail
-        nd.next = None
-        self.tail = nd
-
-        if self.head is None:
-            self.head = self.tail
-
-```
+        if self.cur_no < self.cap and key not in self.key_map:
+            self.append_node(node)
+            self.cur_no += 1
+        elif key in self.key_map:
+            old_node = self.key_map[key]
+            self.pop_node(old_node)
+            self.append_node(node)
+        elif self.cur_no == self.cap:
+            deleted_node = self.dummy_head.next
+            del self.key_map[deleted_node.key]
+            self.pop_node(deleted_node)
+            self.append_node(node)
+        self.key_map[key] = node
