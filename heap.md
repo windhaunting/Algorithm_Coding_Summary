@@ -81,7 +81,8 @@ The decription is given here: "https://leetcode.com/problems/kth-largest-element
                 heapq.heappush(h, n)     #minheap
             elif n > h[0]:
                     heapq.heappop(h)
-                    heapq.heappush(h, n)    
+                    heapq.heappush(h, n)
+                    # heapq.heappushpop(h,n)    # use this more efficently   
             
         return h[0]
 ```
