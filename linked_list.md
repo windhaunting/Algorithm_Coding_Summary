@@ -1,5 +1,5 @@
 ## Linked list 
-Linked list is a linear data structure where data points to next in a sequence. 
+Linked list is a linear data structure where data point to next in a sequence. 
 There are singly linked list, circular linked list, doubly linked list.
 
 The common coding knowledge points for linked list:
