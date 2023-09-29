@@ -224,50 +224,73 @@ The detailed description is [<span style="color:blue;"> here </span>](https://le
 
 
 ```
-class UnionFindSet:
-    def __init__(self, n):
-        self.parents = list(range(n))
-        self.ranks = [0] * n
-        
-    def find(self, u):
-        if u != self.parents[u]:
-            self.parents[u] = self.find(self.parents[u])
-        return self.parents[u]
+class UF():
+    def __init__(self, n, m):
+        self.n = n
+        self.parr = range(0, n+1)   # parent node
+        self.size = [1]*(n+1)       # each group size
+        self.cnt = 0                # how many count of size == m for each group
+        self.m = m
+    def find(self, i):
+        if self.parr[i] != i:
+            self.parr[i] = self.find(self.parr[i])
+        return self.parr[i]
     
-    def union(self, u, v):
-        pu, pv = self.find(u), self.find(v)
-        if pu == pv:
-            return False
-        if self.ranks[pu] > self.ranks[pv]:
-            self.parents[pv] = pu
-            self.ranks[pu] += self.ranks[pv]
-        elif self.ranks[pv] > self.ranks[pu]:
-            self.parents[pu] = pv
-            self.ranks[pv] += self.ranks[pu]
-        else:
-            self.parents[pu] = pv
-            self.ranks[pv] += self.ranks[pu]
-        return True
-
-class Solution:
-    def findLatestStep(self, arr: List[int], m: int) -> int:
-        n, ans = len(arr), -1
-        uf = UnionFindSet(n)
-        
-        for step, i in enumerate(arr):
-            i -= 1
-            uf.ranks[i] = 1
-            for j in (i - 1, i + 1):
-                if 0 <= j < n:
-                    if uf.ranks[uf.find(j)] == m:
-                        ans = step
-                    if uf.ranks[j]:
-                        uf.union(i, j)
-        
-        for i in range(n):
-            if uf.ranks[uf.find(i)] == m:
-                return n
+    def union(self, i, j):
+        pi = self.find(i)
+        pj = self.find(j)
+        if pi != pj:
+            if self.size[pj] == self.m:
+                self.cnt -= 1
+            self.parr[pi] = self.parr[pj]
+            self.size[pj] += self.size[pi]
             
+class Solution(object):
+    def findLatestStep(self, arr, m):
+        """
+        :type arr: List[int]
+        :type m: int
+        :rtype: int
+        """
+        """
+        Input: arr = [3,5,1,2,4], m = 1
+        Output: 4
+        Explanation: 
+        Step 1: "00100", groups: ["1"]
+        Step 2: "00101", groups: ["1", "1"]
+        Step 3: "10101", groups: ["1", "1", "1"]
+        Step 4: "11101", groups: ["111", "1"]
+        Step 5: "11111", groups: ["11111"]
+        """
+        
+        
+        # corner case
+        if not arr or len(arr) == 0:
+            return -1
+        
+        n = len(arr)
+
+        visited = [0]*(n+1)
+        
+        uf = UF(n, m)
+
+        ans = -1
+        cnt = 0
+        for i, ele in enumerate(arr):
+            visited[arr[i]] = 1
+
+            # union the previous location if already in the set
+            if 0 < ele-1 <= n and visited[ele-1]:
+                uf.union(ele, ele-1)
+            if 0 < ele+1 <= n and visited[ele+1]:
+                uf.union(ele, ele+1)
+            # parent
+            pi = uf.find(ele)
+            if uf.size[pi] == m:
+               uf.cnt += 1
+            print("pi: ", i, ele, pi, uf.size[pi], uf.cnt)
+            if uf.cnt >= 1:
+                ans = i+1
         return ans
 
 ```
