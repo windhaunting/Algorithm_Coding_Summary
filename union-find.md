@@ -172,7 +172,7 @@ else:
 
 ```
 
-### Example Union-Find: 305. Number of Islands II
+### Example Union-Find: LC 305. Number of Islands II
 Extend from Leetcode 200--Number of Islands, we may perform an addLand operation which turns the water at position (row, col) into a land. 
 
 ```
@@ -218,7 +218,7 @@ class Union(object):
 ```
 
 
-### Example Union-Find: 1562. Find Latest Group of Size M
+### Example Union-Find: LC 1562. Find Latest Group of Size M
 
 The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/find-latest-group-of-size-m/)
 
@@ -293,4 +293,75 @@ class Solution(object):
                 ans = i+1
         return ans
 
+```
+
+### Example Union-Find: LC 721. Accounts Merge
+
+The detailed description is [<span style="color:blue;"> here </span>]([https://leetcode.com/problems/find-latest-group-of-size-m/](https://leetcode.com/problems/accounts-merge/))
+
+```
+class UF():
+    def __init__(self, n):
+        self.n = n
+        self.arr = range(n)
+
+    def union(self, i, j):
+        pi = self.find(i)    # parent of i
+        pj = self.find(j)
+        if pi != pj:
+            # union
+            self.arr[pi] = self.arr[pj]
+        
+    def find(self, i):
+        if self.arr[i] != i:
+            self.arr[i] = self.find(self.arr[i])
+        return self.arr[i]
+
+
+from collections import defaultdict
+
+class Solution(object):
+    def accountsMerge(self, accounts):
+        """
+        :type accounts: List[List[str]]
+        :rtype: List[List[str]]
+        """
+        
+        """
+        0 N1: (A, B), (B, C)
+        1 N1: (B, D)
+        2 N2: (E, F)
+            (A, B, C, D); parent = 1     (E, F)   parent = 2
+        """
+
+        # there is at most n account from [0, n],  use union find to get at most n group [0, n]
+        # the emails that appears before, are combined in the same group, with the same parent id
+
+
+        if not accounts or len(accounts) == 0:
+            return []
+        
+        dict_email_grp = defaultdict(list)
+
+        n = len(accounts)
+        uf = UF(n)
+
+        for i, accts in enumerate(accounts):
+            name = accts[0]
+            emails = accts[1:]
+            #print("name: ", name, emails)
+            n = len(emails)
+            for j in range(0, n):
+                if emails[j] in dict_email_grp:                     # union
+                    gj = dict_email_grp[emails[j]]
+                    uf.union(gj, i)
+                dict_email_grp[emails[j]] = i
+
+        
+        dict_ans = defaultdict(list)
+        for email, i in dict_email_grp.items():
+            gi = uf.find(i)
+            dict_ans[gi].append(email)
+        
+        return [[accounts[k][0]] + sorted(v) for k, v in dict_ans.items()]
 ```
