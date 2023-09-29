@@ -181,7 +181,23 @@ class Solution(object):
             node = node.right
          
         return res
-    
+
+
+# reverse inorder to get postorder
+class Solution:
+    # @param root, a tree node
+    # @return a list of integers
+    def postorderTraversal(self, root):
+        if not root: return []
+        ans,q=[],[]
+        q.append(root)
+        while q:
+            cur=q.pop()       
+            if cur.left: q.append(cur.left)
+            if cur.right: q.append(cur.right)
+            ans.append(cur.val)
+        return ans[::-1]
+   
 # Inroder traverse
 class Solution(object):
     def inorderTraversal(self, root):
@@ -233,21 +249,7 @@ class Solution(object):
                 pre = peak
         return res
 
-# reverse inorder and post order
-class Solution:
-    # @param root, a tree node
-    # @return a list of integers
-    def postorderTraversal(self, root):
-        if not root: return []
-        ans,q=[],[]
-        q.append(root)
-        while q:
-            cur=q.pop()       
-            if cur.left: q.append(cur.left)
-            if cur.right: q.append(cur.right)
-            ans.append(cur.val)
-        return ans[::-1]
- 
+
  
  
 # for inorder traverse, we can use Morris traversal without using stack or recursion.
