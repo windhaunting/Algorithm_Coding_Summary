@@ -32,7 +32,7 @@ class Solution:
         def helper(nums, indx, curr):
             if len(nums) == indx:
                 ans.append(curr)
-            
+                return
             
             for i in range(0, len(nums)):
                 
