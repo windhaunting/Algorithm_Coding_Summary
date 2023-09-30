@@ -25,6 +25,29 @@ Given an array nums of distinct integers, return all the possible permutations. 
 
 
 ```
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:    
+        # one way to do recursion
+        ans = []
+        def helper(nums, indx, curr):
+            if len(nums) == indx:
+                ans.append(curr)
+            
+            
+            for i in range(0, len(nums)):
+                
+                if nums[i] not in curr:
+                    helper(nums, indx+1, curr + [nums[i]])
+                    
+        curr = []
+        
+        helper(nums, 0, curr)
+        return ans
+```
+
+
+# another way to do this:
+```
 def permuationArray(nums):
     
     def dfsPermutation(nums, l, r):
