@@ -46,7 +46,7 @@ class Solution:
 ```
 
 
-#### another way to do this:
+##### Another way to do this:
 ```
 def permuationArray(nums):
     
