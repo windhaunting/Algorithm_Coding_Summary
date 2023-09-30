@@ -4,7 +4,7 @@ Greedy algorithm is an algorithm paradigm that follows the problem-solving heuri
 
 
 
-# Greedy algorithm example: Fractional Knapsack
+### Greedy algorithm example: Fractional Knapsack
  Given the weights and values of n items, we need to put these items in a knapsack of capacity W to get the maximum total value in the knapsack. we can break items for maximizing the total value of knapsack.
 
 
@@ -55,7 +55,7 @@ class FractionalKnapSack:
 ```
 
 
-# Greedy algorithm example 45. Jump Game II: 
+### Greedy algorithm example LC 45. Jump Game II: 
 Given an array of non-negative integers nums, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps. The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/jump-game-ii/)
 
 
@@ -82,4 +82,41 @@ class Solution(object):
                 curEnd = curFarthest
         return jumps
 
+```
+### Greedy algorithm example 435. Non-overlapping Intervals
+Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
+
+```
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        
+        """
+        use two pointers, greedy algorithm
+        # sort them
+        [1, 2], [1, 3], [3, 4],
+         prev     curr
+          compare current pointer index with the previous pointer;
+          delete list with big smaller end (not really deleting needed, just update the previous pointer);
+        => [1, 2], [3, 4] and continue
+        """
+
+        if not intervals or len(intervals) <= 1:
+            return 0
+
+        # sort by start first
+        intervals.sort(key=lambda ele: (ele[0], ele[1]))
+
+        prev = intervals[0]
+        ans = 0
+        for curr in intervals[1:]:
+            # find overlapping
+            max_start = max(prev[0], curr[0])
+            min_end = min(prev[1], curr[1])
+            if max_start < min_end:  # overlapping
+                if curr[1] < prev[1]: # delete first one by updating the prev
+                    prev = curr
+                ans += 1
+            else:
+                prev = curr
+        return ans
 ```
