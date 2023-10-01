@@ -48,20 +48,36 @@ for all x from 1 to n, the the money needs to pay is dp[i][j] = min(dp[i][j], k 
 (3) find the base case
      the base case is dp[i][j] = 0 for i == j  from 1 to n
 '''
-
-def guesshelper(dp, i, j):
-    if i >= j: return 0
-    if dp[i][j] > 0: return dp[i][j]
+'''
+# 1st DP
+'''
+def getMoneyAmount(self, n):
+    dp = [[0] * (n+1) for i in range(0, n+1)]
+        
+    for i in range(n-1, 0, -1):                 #from n-1 to 1
+        for j in range(i+1, n+1):               #from i+1 to n
+            dp[i][j] = 2**64
+            for k in range(i, j):             #from i to j-1
+                dp[i][j] = min(dp[i][j], k + max(dp[i][k-1], dp[k+1][j]))
+                #print ("dp ij ", i, j, k, dp[i][j])
+    return dp[1][n]
+'''
+# 2nd DP optimized
+def getMoneyAmount(self, n):
+    def guesshelper(dp, i, j):
+        if i >= j: return 0
+        if dp[i][j] > 0: return dp[i][j]
             
-    dp[i][j] = float("inf")
+        dp[i][j] = float("inf")
             
-    for k in range(i, j+1):            
-        dp[i][j] = min(dp[i][j], k + max(guesshelper(dp, i, k-1), guesshelper(dp, k+1, j)))
+        for k in range(i, j+1):            
+            dp[i][j] = min(dp[i][j], k + max(guesshelper(dp, i, k-1), guesshelper(dp, k+1, j)))
             
-    return dp[i][j]
+        return dp[i][j]
         
     dp = [[0] * (n + 1) for i in range(n + 1)]
     return guesshelper(dp, 1, n)
+
 ```
 
 
