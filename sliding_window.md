@@ -1,7 +1,7 @@
 
 # Sliding window
 
-Sliding window is a technique to reduce the use of nested loop and replace it with a single loop. I would consider a special case of two pointers.
+Sliding window is a technique to reduce the use of nested loop and replace it with a single loop. I would consider it as a special case of two pointers.
 
 
 ### Sliding window example: 76. Minimum Window Substring
