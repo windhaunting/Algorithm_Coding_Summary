@@ -49,7 +49,7 @@ for all x from 1 to n, the the money needs to pay is dp[i][j] = min(dp[i][j], k 
      the base case is dp[i][j] = 0 for i == j  from 1 to n
 '''
 '''
-# 1st DP
+# 1st DP bottom-up
 '''
 def getMoneyAmount(self, n):
     dp = [[0] * (n+1) for i in range(0, n+1)]
@@ -62,7 +62,7 @@ def getMoneyAmount(self, n):
                 #print ("dp ij ", i, j, k, dp[i][j])
     return dp[1][n]
 '''
-# 2nd DP optimized
+# 2nd DP top-down optimized
 def getMoneyAmount(self, n):
     def guesshelper(dp, i, j):
         if i >= j: return 0
