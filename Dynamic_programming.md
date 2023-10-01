@@ -38,6 +38,17 @@ The detailed description is [<span style="color:blue;"> here </span>](https://le
 
 
 ```
+        '''
+         (1) Define the subproblem
+              define DP[i][j]  the money needs to pay to guarantee a win, so the answer is DP[1][n]
+        (2) find the recursion
+              the number is in [1, n] ,  guess the number x (from 1 to n).  if we pick up k,   if k != x
+             then the worst case complexity to guarantee win is the get the maximum cost:  k + max(dp[1][k-1]), dp[k+1][n])
+        for all x from 1 to n, the the money needs to pay is dp[i][j] = min(dp[i][j], k + max(dp[1][k-1]), dp[k+1][n]))
+        (3) find the base case
+            the base case is dp[i][j] = 0 for i == j  from 1 to n
+        '''
+
         def guesshelper(dp, i, j):
             if i >= j: return 0
             if dp[i][j] > 0: return dp[i][j]
