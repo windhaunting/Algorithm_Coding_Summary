@@ -160,13 +160,32 @@ class Solution:
 
         """
         # Method 2 use DP to optimize;     memoization; dp[i] indicate the minimum number of coins for i value
-
-        dp[i][amount]  index i make change of amount
-        dp[i][c] = min(dp[i-1][c], 1 + dp[i][c-coins[i]]) if i-1>=0,  c-coins[i] >= 0
-        # initialize
-        dp[i][0] == 1,  0<=i<=len(coins)
-        dp[0][j] == 0
         """
+        #dp[i][amount]  index i make change of amount
+        # dp[i][c] = min(dp[i-1][c], 1 + dp[i][c-coins[i]]) if i-1>=0,  c-coins[i] >= 0
+        # initialize
+        #dp[i][0] == 1,  0<=i<=len(coins)
+        #dp[0][j] == 0
+        """
+        """
+        n = len(coins)
+        dp = [[float('inf') for _ in range(amount+1)] for _ in range(n)]
+              
+        for i in range(0, n):
+            dp[i][0] = 0
+
+              
+        for i in range(0, n):
+              for c in range(1, amount+1):
+                if i-1 >= 0:
+                    dp[i][c] = dp[i-1][c]
+                if c >= coins[i] and dp[i][c-coins[i]] != float('inf'):
+                    dp[i][c] = min(dp[i][c], 1 + dp[i][c-coins[i]])
+        
+        return dp[n-1][amount] if dp[n-1][amount] != float('inf') else -1
+        """
+    
+        # Method 2's optimized space to o(amount)
         dp = [0] * (amount + 1)
         for i in range(1, amount+1):
             dp[i] =  sys.maxsize
