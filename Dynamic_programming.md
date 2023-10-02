@@ -194,7 +194,7 @@ class Solution:
             for j in range(len(coins)):
                 if coins[j] <= i:
                     tmp = dp[i-coins[j]]
-                    if tmp != -1 and tmp + 1 < dp[i]:
+                    if tmp + 1 < dp[i]:
                         dp[i] = tmp + 1
         return dp[amount]  if dp[amount]  != sys.maxsize else -1
 
