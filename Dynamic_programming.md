@@ -131,27 +131,53 @@ You are given an integer array coins representing coins of different denominatio
 
 
 ```
-    # dp[i][amount]  index i make change of amount
-    # dp[i][c] = min(dp[i-1][c], 1 + dp[i][c-coins[i]]) if i-1>=0,  c-coins[i] >= 0
-    # initialize
-    # dp[i][0] == 1,  0<=i<=len(coins)
-    # dp[0][j] == 0
 
-    n = len(coins)
-        dp = [[float('inf') for _ in range(amount+1)] for _ in range(n)]
-              
-        for i in range(0, n):
-            dp[i][0] = 0
 
-              
-        for i in range(0, n):
-              for c in range(1, amount+1):
-                if i-1 >= 0:
-                    dp[i][c] = dp[i-1][c]
-                if c >= coins[i] and dp[i][c-coins[i]] != float('inf'):
-                    dp[i][c] = min(dp[i][c], 1 + dp[i][c-coins[i]])
+import sys
+class Solution:
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
         
-        return dp[n-1][amount] if dp[n-1][amount] != float('inf') else -1
+        '''
+        # Method 1: using top-down recursive: count(coins, amount) =  1 + min(count(coins, amount - coins[i])) for i from 0 to len(coins)
+        
+        # time limit;   with input [1,2,5]   100;         lots of repetition; overlapping subproblem
+        if amount == 0:
+            return 0
+        ans = sys.maxsize
+        
+        for i in range(0, len(coins)):
+            if coins[i] <= amount:
+                tmp = self.coinChange(coins, amount - coins[i])
+                if tmp != -1 and tmp + 1 < ans:
+                    ans = tmp + 1
+        return ans if ans != sys.maxsize else -1
+        '''
+
+        """
+        # Method 2 use DP to optimize;     memoization; dp[i] indicate the minimum number of coins for i value
+
+        dp[i][amount]  index i make change of amount
+        dp[i][c] = min(dp[i-1][c], 1 + dp[i][c-coins[i]]) if i-1>=0,  c-coins[i] >= 0
+        # initialize
+        dp[i][0] == 1,  0<=i<=len(coins)
+        dp[0][j] == 0
+        """
+        dp = [0] * (amount + 1)
+        for i in range(1, amount+1):
+            dp[i] =  sys.maxsize
+        
+        for i in range(1, amount+1):
+            for j in range(len(coins)):
+                if coins[j] <= i:
+                    tmp = dp[i-coins[j]]
+                    if tmp != -1 and tmp + 1 < dp[i]:
+                        dp[i] = tmp + 1
+        return dp[amount]  if dp[amount]  != sys.maxsize else -1
 
 ```
 
