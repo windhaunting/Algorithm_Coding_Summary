@@ -90,29 +90,37 @@ The detailed description is [<span style="color:blue;"> here </span>](https://le
 
 """
 Bottom-up method:
-if s is None or len(s) == 0:
-    return 0
-dp = [0] * (len(s) + 1)
-dp[0] = 1
 
-for i in range(1, len(s)+1):
-    if int(s[i-1]) != 0:
-        dp[i] += dp[i-1]
-    if i-2 >= 0 and 9 < int(s[i-2:i]) <= 26:     # '06' => 0   '30'=> 0;   '209' => 2
-        dp[i] += dp[i-2]
-return dp[len(s)]
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        
+        if s is None or len(s) == 0:
+            return 0
+        dp = [0] * (len(s) + 1)
+        dp[0] = 1
+
+        for i in range(1, len(s)+1):
+            if int(s[i-1]) != 0:
+                dp[i] += dp[i-1]
+            if i-2 >= 0 and 9 < int(s[i-2:i]) <= 26:     # '06' => 0   '30'=> 0;   '209' => 2
+                dp[i] += dp[i-2]
+        return dp[len(s)]
 """
 
+
 # top-down method:
-n = len(s)
-#@lru_cache(maxsize=None)
-def solve(i):
-    if i>=n: return 1
-    a, b = 0, 0
-    if '1'<=s[i]<='9': a = solve(i+1)
-    if i+1 < n and '10'<=s[i]+s[i+1]<='26': b = solve(i+2)
-    return a+b
-return solve(0)
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        
+        n = len(s)
+        #@lru_cache(maxsize=None)
+        def solve(i):
+            if i>=n: return 1
+            a, b = 0, 0
+            if '1'<=s[i]<='9': a = solve(i+1)
+            if i+1 < n and '10'<=s[i]+s[i+1]<='26': b = solve(i+2)
+            return a+b
+        return solve(0)
 
 ```
 
