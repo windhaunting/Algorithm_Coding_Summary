@@ -192,10 +192,8 @@ class Solution:
         
         for i in range(1, amount+1):
             for j in range(len(coins)):
-                if coins[j] <= i:
-                    tmp = dp[i-coins[j]]
-                    if tmp + 1 < dp[i]:
-                        dp[i] = tmp + 1
+                if i >= coins[j]:
+                    dp[i] = min(dp[i], 1 + dp[i-coins[j]])
         return dp[amount]  if dp[amount]  != sys.maxsize else -1
 
 ```
