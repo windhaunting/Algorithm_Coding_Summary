@@ -206,35 +206,65 @@ You are given an integer array coins representing coins of different denominatio
 
 ```
 
-    # dp[i][j]: the number of combinations with up index i of coins that make change of j
-    N = len(coins)
-    if N == 0: 
-        return int(N == amount)
-    
-    dp_sum = [[0] * (amount+1) for _ in range(N)]
-    for i in range(N): 
-        dp_sum[i][0] = 1
-    
-    for i,j in product(range(N), range(amount)):
+class Solution:
+    def numDecodings(self, s: str) -> int:
         
-        dp_sum[i][j+1] = dp_sum[i-1][j+1]
+        """
+        # 1ST dp SUCCESS
+        if s is None or len(s) == 0:
+            return 0
+        dp = [0] * (len(s) + 1)
+        dp[0] = 1
         
-        if j+1 - coins[i] >= 0:
-            dp_sum[i][j+1] += dp_sum[i][j+1-coins[i]]           
-                
-    return dp_sum[-1][-1]
-    """
-    
-    # 2nd optimize
-    
-    dp = [0] * (amount + 1)
-    dp[0] = 1
-    for i in coins:
-        for j in range(1, amount + 1):
-            if j >= i:
-                dp[j] += dp[j - i]
-    return dp[amount]
-    """
+        for i in range(1, len(s)+1):
+            if int(s[i-1]) != 0:
+                dp[i] += dp[i-1]
+            if i-2 >= 0 and 9 < int(s[i-2:i]) <= 26:     # '06' => 0   '30'=> 0;   '209' => 2
+                dp[i] += dp[i-2]
+        return dp[len(s)]
+        """
+
+        """
+        # 2nd SUCCESS
+        # top-down method:
+        n = len(s)
+        @lru_cache(maxsize=None)
+        def solve(i):
+            if i>=n: return 1
+            a, b = 0, 0
+            if '1'<=s[i]<='9':
+                a = solve(i+1)
+            if i+1 < n and '10'<=s[i]+s[i+1]<='26': 
+                b = solve(i+2)
+            return a+b
+
+        return solve(0)
+        """
+
+        
+        
+        # practice again
+        
+        # DP[i] = DP[i-1] ;  if s[i] <=9
+        #         + DP[i-2]  if 10 <= s[i-1:i+1] <=26 
+        # case 0,  06
+        
+        if not s or len(s) == 0:
+            return 0
+        
+        n = len(s)
+        
+        dp = [0] * (n+1)
+        dp[0] = 1
+        
+        for i in range(1, n+1):
+            if s[i-1] != '0':
+                dp[i] = dp[i-1]
+            
+            if i-2 >= 0 and 10 <= int(s[i-2:i]) <= 26:
+                dp[i] += dp[i-2]
+
+        return dp[n]
 
 ```
 
