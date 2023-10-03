@@ -87,7 +87,35 @@ Given n non-negative integers representing an elevation map where the width of e
 
 
 ```
-        #Use two pointers, but only one loop
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+
+      # idea 1 use two loops SUCCESS
+        res = 0
+        max_ht_dict = collections.defaultdict(int)
+        mx = 0
+
+        n =  len(height)
+        for i in range(0, n):
+            max_ht_dict[i] = mx            # get each index's height's bigger height at left most side's height
+            mx = max(mx, height[i])
+
+        mx = 0
+        for i in range(n-1, -1, -1):
+            max_ht_dict[i] = min(max_ht_dict[i], mx)   # find the right most's bigger height and compared left most bigger height, and then get the minimum value
+            mx = max(mx, height[i])              
+
+            if max_ht_dict[i] > height[i]:
+                res += max_ht_dict[i] - height[i]
+
+        return res
+        '''
+        
+        # use one iteration
         l = 0
         r = len(height)-1
         res = 0
