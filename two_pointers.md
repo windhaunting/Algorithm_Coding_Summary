@@ -50,9 +50,16 @@ Given a 1-indexed array of integers numbers that is already sorted in non-decrea
 You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container, such that the container contains the most water. Return the maximum amount of water a container can store. The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/container-with-most-water/)
 
 ```
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        
 #  use two pointer l from 0 to right, r from the most rightward to 0
 
- n = len(height)
+        n = len(height)
         
         l = 0
         r = n - 1
