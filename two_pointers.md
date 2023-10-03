@@ -10,9 +10,15 @@ It commonly used as looping, find answers in a subarray based on two pointer int
 Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find the indices of two numbers such that the two numbers add up to a specific target number.  The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
 ```
-# Use l and r pointers
+     def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        # Use l and r pointers
 
-     l = 0
+        l = 0
         r = len(numbers)-1
         
         if r <= 1:
