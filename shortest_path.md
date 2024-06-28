@@ -13,7 +13,7 @@ If the edge weight in the graph is "1", we could use directly simply BFS to trav
 ```
 #Input graph structure: edge list
 # Transfer to Adjcency Matrix
-# Dijkstra alogirthm with minheap, complexity is o(ElogV), but sac complexity is  O(|E|) items on the min_dist queue, high for dense graph
+# Dijkstra alogirthm with minheap, complexity is o(ElogV), but the complexity is  O(|E|) items on the min_dist queue, high for dense graph
 
 from heapq import heappush
 from heapq import heappop
