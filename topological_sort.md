@@ -43,8 +43,8 @@ Topological sorting  for Directed Acyclic Graph (DAG) is a linear ordering of ve
                 if i not in visited:
                     self.topologicalSortHelper(i,visited,stack)
     
-            # Push current vertex to stack which stores result
-            stack.insert(0,v)
+            # Push current vertex to stack which stores the result
+            stack.append(v)
     
         # The function to do Topological Sort. It uses recursive 
         # topologicalSortUtil()
@@ -63,7 +63,9 @@ Topological sorting  for Directed Acyclic Graph (DAG) is a linear ordering of ve
                     self.topologicalSortHelper(v,visited,stack)
     
             # Print contents of stack
-            print (stack[::-1])
+            print("Topological sorting of the graph:", end=" ")
+            while stack:
+               print(stack.pop(), end=" ")
 
     g= Graph()
     g.addEdge(7, 2);
