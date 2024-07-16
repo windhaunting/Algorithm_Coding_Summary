@@ -8,7 +8,7 @@ Application:  Detect a cycle in an undirected graph; Find the number of connecte
 
 
 
-### Implementation one of Union-Find
+### Implementation of Union-Find
 
 ```
 from collections import defaultdict
@@ -71,7 +71,7 @@ print ("cycle or not ", g.checkCycle())
 
 ```
 
-### Implementation one of Union-Find--optimized implementation
+### Implementation of Union-Find--optimized implementation
 
 
 ```
@@ -109,9 +109,6 @@ def find(subsets, node):
 # A function that does union of two sets  
 # of u and v(uses union by rank) 
 def union(subsets, u, v): 
-    
-    #if find(subsets, u) == find(subsets, v):
-    #    return 
     
     # Attach smaller rank tree under root  
     # of high rank tree(Union by Rank) 
