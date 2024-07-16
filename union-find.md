@@ -77,7 +77,7 @@ print ("cycle or not ", g.checkCycle())
 
 ```
 # 2nd optimized implementation ; union-find and path compression; make it balanced
-#  O(logn) by union
+# worst O(logn) by union. 
 
 # A union by rank and path compression based  
 # program to detect cycle in a graph 
