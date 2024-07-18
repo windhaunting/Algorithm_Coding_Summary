@@ -170,6 +170,7 @@ g.dijkstra(0)
 
 ```
 
+Reference: https://www.geeksforgeeks.org/bellman-ford-algorithm-dp-23/
 
 
 ## Bellman-Ford algorithm
@@ -352,3 +353,5 @@ graph = [[0,5,INF,10],
 floydWarshall(graph); 
 
 ```
+
+Reference: https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/
