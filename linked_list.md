@@ -32,7 +32,7 @@ class Solution(object):
         p2 = p1.next
         
         head.next = None;
-        while(p1 is not None and p2 is not None):
+        while(p1 and p2):
             tmp = p2.next
             p2.next = p1
             p1 = p2
