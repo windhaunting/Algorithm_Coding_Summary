@@ -56,7 +56,7 @@ class FractionalKnapSack:
 
 
 ### Greedy algorithm example LC 45. Jump Game II: 
-Given an array of non-negative integers nums, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps. The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/jump-game-ii/){:target="_blank"}
+Given an array of non-negative integers nums, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps. The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/jump-game-ii/)
 
 
 ```
@@ -84,7 +84,7 @@ class Solution(object):
 
 ```
 ### Greedy algorithm example 435. Non-overlapping Intervals
-Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping. The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/non-overlapping-intervals/description/){:target="_blank"}
+Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping. The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/non-overlapping-intervals/description/)
 
 ```
 class Solution:
