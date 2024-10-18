@@ -219,6 +219,71 @@ def getMoneyAmount(self, n):
 
 ```
 
+
+### DP example:
+0/1 Knapsack Problem : Given N items where each item has some weights and values associated with it and also given a bag with capacity cap, [i.e., the bag can hold at most cap weight in it]. The task is to put the items into the bag such that the total value associated with them is the maximum possible. The function should return the maximum total value that can fit within the maximum capacity of the bag.
+
+Note: The constraint here is we can either put an item completely into the bag or cannot put it at all [It is not possible to put a part of an item into the bag].
+
+
+```
+
+def knapsack(weights: List[int], values: List[int], cap: int) -> int:
+    '''
+    memo = {}
+
+    # Helper function to solve the knapsack problem recursively
+    def knapsack_recursive(n, remaining_cap):
+        memo = {}
+
+    # Helper function to solve the knapsack problem recursively
+    def knapsack_recursive(n, remaining_cap):
+        # Base case: if no items are left or the capacity is exhausted
+        if n == 0 or remaining_cap == 0:
+            return 0
+        # Check if the result for the current subproblem is already memoized
+        if (n, remaining_cap) in memo:
+            return memo[(n, remaining_cap)]
+        # If the weight of the current item is more than the remaining capacity, skip it
+        if weights[n - 1] > remaining_cap:
+            result = knapsack_recursive(n - 1, remaining_cap)
+        else:
+            # Recursively solve by either including the current item or excluding it
+            include_item = values[n - 1] + knapsack_recursive(n - 1, remaining_cap - weights[n - 1])
+            exclude_item = knapsack_recursive(n - 1, remaining_cap)
+            result = max(include_item, exclude_item)
+        # Store the result in the memoization table before returning
+        memo[(n, remaining_cap)] = result
+
+        return result
+
+    # Start the recursive process with the full number of items and the full capacity
+    return knapsack_recursive(len(weights), cap)
+
+    '''
+
+    '''
+     dp[i+1][c] = max(dp[i][c], dp[i][c-weights[i]] + values[i])
+          weights/values       0 1 2 3....60, ... 160, ... 280       
+     10   0                             60, 60, 60,....
+     20   1                                      160, 160,....
+     30   2
+    '''
+    
+    if not weights or cap <= 0:
+        return 0
+    n = len(weights)
+    dp = [[0] * (cap+1) for _ in range(n+1)]
+    
+    for i in range(n):
+        for c in range(cap+1):
+            dp[i+1][c] = dp[i][c]
+            if c >= weights[i]:
+                dp[i+1][c] = max(dp[i+1][c], dp[i][c-weights[i]] + values[i])
+            #print("ddd: ", dp[i+1][c])
+    return dp[n][cap]
+```
+
 ### DP example: 322. Coin Change  (Matrix DP) 
 
 You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money. Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1. You may assume that you have an infinite number of each kind of coin. The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/coin-change/) 
@@ -403,6 +468,7 @@ print(diff_between_two_strings("ABCDEFG", "ABDFFGH"))
 Others:
 LC 494. Target Sum
 LC 53. Maximum Subarray
+416. Partition Equal Subset Sum    
 
 
 
