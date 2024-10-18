@@ -32,6 +32,9 @@ Dynamic Programming (DP) is an algorithmic technique for solving an optimization
 5) Range DP;
 
 
+### Another problem to notice:'
+How to reconstruct the optimal path from DP. e.g. List the Difference Between Two Strings
+
 
 ### DP example 375. Guess Number Higher or Lower II. 
 The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/guess-number-higher-or-lower-ii/#/description)
