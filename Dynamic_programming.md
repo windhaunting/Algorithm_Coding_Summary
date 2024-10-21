@@ -465,12 +465,10 @@ print(diff_between_two_strings("ABCDEFG", "ABDFFGH"))
 
 ```
 
-Others:
+##### Others:
 
 LC 494. Target Sum
-
 LC 53. Maximum Subarray
-
 LC 416. Partition Equal Subset Sum    
 
 
