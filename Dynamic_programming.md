@@ -23,6 +23,25 @@ Dynamic Programming (DP) is an algorithmic technique for solving an optimization
 3) Top-down method with memoization  or bottom-up method 
 
 
+#### Top-down methods process (recursive with memoization):
+start from the main problem and recursively solve smaller subproblems, but we store the results of already computed subproblems to avoid redundant computations.
+
+1) Define the recursive relation for breaking the problem into subproblems.
+2) Identify and handle base cases to stop recursion.
+3) Use memoization to store results of subproblems.
+4) Recursively compute the solution while checking and updating the memo.
+5) Return the solution for the original problem.
+   
+#### Bottom-up method process (iterative with tabulation):
+solve smaller subproblems first and build up the solution to the main problem iteratively.
+
+1) Identify subproblems and their dependencies.
+2) Create a table to store solutions.
+3) Initialize base cases in the table.
+4) Iteratively fill the table using previous results.
+5) Return the final solution from the table.
+
+
 ## DP common type
 
 1) Sequence DP 
