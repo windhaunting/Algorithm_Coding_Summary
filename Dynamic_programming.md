@@ -52,7 +52,7 @@ solve smaller subproblems first and build up the solution to the main problem it
 
 
 
-### Another problem to notice:'
+### Another problem to notice:
 How to reconstruct the optimal path from DP. e.g. List the Difference Between Two Strings
 
 
