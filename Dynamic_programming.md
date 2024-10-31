@@ -160,7 +160,7 @@ class Solution:
 
 ```
 
-# DP Example: 1143. Longest Common Subsequence (2 Sequence DP)
+## DP Example: 1143. Longest Common Subsequence (2 Sequence DP)
 
 Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
 The detailed description is [<span style="color:blue;"> here </span>](https://leetcode.com/problems/longest-common-subsequence/description/)  
@@ -239,8 +239,8 @@ def getMoneyAmount(self, n):
 ```
 
 
-### DP example:
-0/1 Knapsack Problem : Given N items where each item has some weights and values associated with it and also given a bag with capacity cap, [i.e., the bag can hold at most cap weight in it]. The task is to put the items into the bag such that the total value associated with them is the maximum possible. The function should return the maximum total value that can fit within the maximum capacity of the bag.
+### DP example: 0/1 Knapsack Problem 
+Given N items where each item has some weights and values associated with it and also given a bag with capacity cap, [i.e., the bag can hold at most cap weight in it]. The task is to put the items into the bag such that the total value associated with them is the maximum possible. The function should return the maximum total value that can fit within the maximum capacity of the bag.
 
 Note: The constraint here is we can either put an item completely into the bag or cannot put it at all [It is not possible to put a part of an item into the bag].
 
