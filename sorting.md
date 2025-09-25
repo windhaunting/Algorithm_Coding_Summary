@@ -154,8 +154,8 @@ The second idea:
 construct the tuple list and sort based on the element in a tuple.
 
 ```
-arr_lst = [(e, abs(e), e//e) for e in arr]
-arr_lst = arr_lst.sort(key = lambda ele: (ele[1], ele[2]))
+arr_lst = [(e, abs(e)) for e in arr]
+arr_lst.sort(key = lambda ele: (ele[1], ele[0]))
 arr_sorted = [ele[0] for ele in arr_lst]
 
 ```
